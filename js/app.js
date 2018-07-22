@@ -50,15 +50,13 @@ function makeGame() {
   });
   // adds each card to the page
   deck.innerHTML = cardHTML.join('');
-  //sets defaults for game
   defaults();
-  
   cardEvents();
   restartButton();
-
   startTimer();
 }
 
+//sets defaults for game
  function defaults() {
    // sets moves stars and timer to defaults
    movesHTML.innerHTML = 0;
@@ -86,6 +84,7 @@ function shuffle(array) {
     return cards;
 }
 
+//sets logic for comparing selected cards
 function matching() {
   if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
     match();
@@ -116,7 +115,7 @@ function noMatch() {
   }, 500 );
 }
 
-
+//sets functionality for clicking on cards
 function cardEvents() {
   const pageCards = document.querySelectorAll('.card');
   pageCards.forEach(function(card){
@@ -152,6 +151,7 @@ function moveCount() {
   movesHTML.innerHTML = moves;
 }
 
+//sets stars displayed according to move score
 function scoreCount() {
   if (moves === 25) {
     stars.firstElementChild.style.display = 'none';
@@ -160,6 +160,7 @@ function scoreCount() {
   }
 }
 
+//creates time interval that itterates each second
 function startTimer() {
   time = 0;
   timerHTML = document.getElementById('timer')
@@ -167,13 +168,13 @@ function startTimer() {
     time++;
     showTime();
   }, 1000);
-
 }
 
 function stopTimer() {
   clearInterval(clock);
 }
 
+//sets display format of time
 function showTime() {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -184,17 +185,24 @@ function showTime() {
   }
 }
 
+//sets functionality for modal
 function modalPrompt() {
   yourTime = document.querySelector('.your-time');
   yourMoves = document.querySelector('.your-moves');
   yourStars = document.querySelector('.your-stars');
+
+  //show modal
   modal.classList.remove('hidden');
+
+  //display stats for time, moves, stars
   yourTime.innerHTML = `TIME: ${timerHTML.innerHTML}`;
   yourMoves.innerHTML = `SCORE: ${moves}`;
   yourStars.appendChild(stars.cloneNode(true));
+
   replay();
 }
 
+//Checks if game is won
 function victoryCondition() {
   if (matchedPairs === 8) {
     stopTimer();
@@ -202,6 +210,7 @@ function victoryCondition() {
   }
 }
 
+//sets functionality for replay button in modal
 function replay() {
   const replay = document.querySelector('.play-again');
   replay.addEventListener('click', function(e) {
