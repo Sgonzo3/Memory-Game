@@ -46,6 +46,9 @@ function makeGame() {
   cardEvents();
   stopTimer();
   startTimer();
+  stars.firstElementChild.style.display = "inline";
+  stars.lastElementChild.style.display = "inline";
+
   // timerHTML.innerHTML = `0:00`;
   restart();
 }
@@ -77,37 +80,42 @@ function shuffle(array) {
 }
 
 function matching() {
-  if (openCards[0].firstElementChild.className == openCards[1].firstElementChild.className) {
-    openCards[0].classList.add('match');
-    openCards[1].classList.add('match');
-    openCards = [];
-    matchedPairs++;
-    //for testing modal
-    // matchedPairs = 8;
+  if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
+    match();
     victoryCondition();
   } else {
-    // If not matched
-    setTimeout(function() {
-      openCards.forEach(function(card) {
-        card.classList.remove('open', 'show');
-      });
-
-      openCards = [];
-    }, 500 );
-
+    noMatch();
   }
 }
 
-// function cardClicks() {
-// }
+function match() {
+  openCards[0].classList.add('match');
+  openCards[1].classList.add('match');
+  openCards = [];
+  matchedPairs++;
+  //for testing modal
+  // matchedPairs = 8;
+}
+
+function noMatch() {
+  // If not matched
+  setTimeout(function() {
+    openCards.forEach(function(card) {
+      card.classList.remove('open', 'show');
+    });
+    openCards = [];
+  }, 500 );
+}
+
+
 function cardEvents() {
   const pageCards = document.querySelectorAll('.card');
   pageCards.forEach(function(card){
       // adds eventlistener to each .card
-      card.addEventListener('click', function cardClicks(){
+      card.addEventListener('click', function cardClicks() {
         // prevents selecting more than 2 cards or selecting open cards
         if (openCards.length <= 1 && !card.classList.contains('open')) {
-          // adds each chosen card to an array
+          // adds each chosen card to array
           openCards.push(card);
           moveCount();
           scoreCount();
@@ -117,35 +125,32 @@ function cardEvents() {
         if (openCards.length === 2) {
           matching();
         }
-        // else if (openCards.length > 2) {
-        //   card.classList.remove('open', 'show');
-        // }
     });
   });
 }
 
-// cardEvents();
-
+//sets functionality for restart button
 function restart() {
   const restart = document.querySelector('.restart');
   restart.addEventListener('click', function(e) {
     //create functionreset stars?, call here
     //maybe use hidden class or toggle instead?
-    stars.firstElementChild.style.display = "inline";
-    stars.lastElementChild.style.display = "inline";
+    // stars.firstElementChild.style.display = "inline";
+    // stars.lastElementChild.style.display = "inline";
     makeGame();
   });
 }
 
+//updates moves count and HTML
 function moveCount() {
   moves++;
   movesHTML.innerHTML = moves;
 }
 
 function scoreCount() {
-  if (moves == 25) {
+  if (moves === 25) {
     stars.firstElementChild.style.display = 'none';
-  } else if (moves == 33) {
+  } else if (moves === 33) {
     stars.lastElementChild.style.display = 'none';
   }
 }
@@ -183,7 +188,6 @@ function modalPrompt() {
   yourMoves.innerHTML = `SCORE: ${moves}`;
   yourStars.appendChild(stars.cloneNode(true));
   replay();
-
 }
 
 function victoryCondition() {
@@ -198,8 +202,8 @@ function replay() {
   replay.addEventListener('click', function(e) {
     //create functionreset stars?, call here
     //use .hidden or toggle instead?
-    stars.firstElementChild.style.display = "inline";
-    stars.lastElementChild.style.display = "inline";
+    // stars.firstElementChild.style.display = "inline";
+    // stars.lastElementChild.style.display = "inline";
     modal.classList.add('hidden');
     makeGame();
   });
