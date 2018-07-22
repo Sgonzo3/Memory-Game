@@ -23,6 +23,19 @@ const cards = [
 
 start();
 
+// Hides deck, creates button prompt and event listener to start game
+  function start() {
+    let startButton = document.getElementById('start');
+    // hides deck before prompt
+    deck.classList.add('hidden');
+    startButton.addEventListener('click', function(e) {
+         makeGame();
+         // Hides start prompt
+         startButton.classList.add('hidden');
+         // shows deck with cards
+         deck.classList.remove('hidden');
+       });
+  }
 
 //creates cardHTML
 function makeCards(card) {
@@ -31,38 +44,32 @@ function makeCards(card) {
 
 
 function makeGame() {
-  // setInterval for timer
   // shuffles the list, adds HTML to each card
   let cardHTML  = shuffle(cards).map(function(card) {
     return makeCards(card);
   });
   // adds each card to the page
   deck.innerHTML = cardHTML.join('');
-  // sets moves and text to zero
-  movesHTML.innerHTML = 0;
-  moves = 0;
-  openCards = [];
-  matchedPairs = 0;
+  //sets defaults for game
+  defaults();
+  
   cardEvents();
-  stopTimer();
-  startTimer();
-  stars.firstElementChild.style.display = "inline";
-  stars.lastElementChild.style.display = "inline";
+  restartButton();
 
-  // timerHTML.innerHTML = `0:00`;
-  restart();
+  startTimer();
 }
 
-// * Create button and event listener to start game
-  function start() {
-    let startButton = document.getElementById('start');
-    deck.classList.add('hidden');
-    startButton.addEventListener('click', function(e) {
-         makeGame();
-         startButton.classList.add('hidden');
-         deck.classList.remove('hidden');
-       });
-  }
+ function defaults() {
+   // sets moves stars and timer to defaults
+   movesHTML.innerHTML = 0;
+   moves = 0;
+   stars.firstElementChild.style.display = "inline";
+   stars.lastElementChild.style.display = "inline";
+   stopTimer();
+   // sets matching array to empty and match count to 0
+   openCards = [];
+   matchedPairs = 0;
+ }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -89,20 +96,22 @@ function matching() {
 }
 
 function match() {
+  //show cards as matched
   openCards[0].classList.add('match');
   openCards[1].classList.add('match');
+  //reset array
   openCards = [];
+  //inscrese match count
   matchedPairs++;
-  //for testing modal
-  // matchedPairs = 8;
 }
 
 function noMatch() {
-  // If not matched
+  // If not matched, sets time to flip back cards
   setTimeout(function() {
     openCards.forEach(function(card) {
       card.classList.remove('open', 'show');
     });
+    //reset array
     openCards = [];
   }, 500 );
 }
@@ -130,13 +139,9 @@ function cardEvents() {
 }
 
 //sets functionality for restart button
-function restart() {
+function restartButton() {
   const restart = document.querySelector('.restart');
   restart.addEventListener('click', function(e) {
-    //create functionreset stars?, call here
-    //maybe use hidden class or toggle instead?
-    // stars.firstElementChild.style.display = "inline";
-    // stars.lastElementChild.style.display = "inline";
     makeGame();
   });
 }
@@ -200,10 +205,7 @@ function victoryCondition() {
 function replay() {
   const replay = document.querySelector('.play-again');
   replay.addEventListener('click', function(e) {
-    //create functionreset stars?, call here
-    //use .hidden or toggle instead?
-    // stars.firstElementChild.style.display = "inline";
-    // stars.lastElementChild.style.display = "inline";
+    //hide modal before next match
     modal.classList.add('hidden');
     makeGame();
   });
