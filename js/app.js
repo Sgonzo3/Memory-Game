@@ -1,3 +1,4 @@
+//Globals
 let moves = 0;
 let movesHTML = document.getElementById('moves');
 const stars = document.querySelector('.stars');
@@ -9,12 +10,12 @@ let matchedPairs;
 let openCards;
 const deck = document.querySelector('.deck');
 
-// list containing all potential cards
+// list containing all potential card class names
 const cards = [
   'fa-diamond', 'fa-diamond',
-  'fa-paper-plane-o','fa-paper-plane-o',
+  'fa-paper-plane-o', 'fa-paper-plane-o',
   'fa-anchor', 'fa-anchor',
-  'fa-bolt','fa-bolt',
+  'fa-bolt', 'fa-bolt',
   'fa-cube', 'fa-cube',
   'fa-leaf', 'fa-leaf',
   'fa-bicycle', 'fa-bicycle',
@@ -24,18 +25,18 @@ const cards = [
 start();
 
 // Hides deck, creates button prompt and event listener to start game
-  function start() {
-    let startButton = document.getElementById('start');
-    // hides deck before prompt
-    deck.classList.add('hidden');
-    startButton.addEventListener('click', function(e) {
-         makeGame();
-         // Hides start prompt
-         startButton.classList.add('hidden');
-         // shows deck with cards
-         deck.classList.remove('hidden');
-       });
-  }
+function start() {
+  let startButton = document.getElementById('start');
+  // hides deck before prompt
+  deck.classList.add('hidden');
+  startButton.addEventListener('click', function(e) {
+    makeGame();
+    // Hides start prompt
+    startButton.classList.add('hidden');
+    // shows deck with cards
+    deck.classList.remove('hidden');
+  });
+}
 
 //creates cardHTML
 function makeCards(card) {
@@ -45,7 +46,7 @@ function makeCards(card) {
 
 function makeGame() {
   // shuffles the list, adds HTML to each card
-  let cardHTML  = shuffle(cards).map(function(card) {
+  let cardHTML = shuffle(cards).map(function(card) {
     return makeCards(card);
   });
   // adds each card to the page
@@ -57,31 +58,32 @@ function makeGame() {
 }
 
 //sets defaults for game
- function defaults() {
-   // sets moves stars and timer to defaults
-   movesHTML.innerHTML = 0;
-   moves = 0;
-   stars.firstElementChild.style.display = "inline";
-   stars.lastElementChild.style.display = "inline";
-   stopTimer();
-   // sets matching array to empty and match count to 0
-   openCards = [];
-   matchedPairs = 0;
- }
+function defaults() {
+  // sets moves stars and timer to defaults
+  movesHTML.innerHTML = 0;
+  moves = 0;
+  stars.firstElementChild.style.display = "inline";
+  stars.lastElementChild.style.display = "inline";
+  stopTimer();
+  // sets matching array to empty and match count to 0
+  openCards = [];
+  matchedPairs = 0;
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = cards.length, temporaryValue, randomIndex;
+  var currentIndex = cards.length,
+    temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-    return cards;
+  return cards;
 }
 
 //sets logic for comparing selected cards
@@ -112,27 +114,27 @@ function noMatch() {
     });
     //reset array
     openCards = [];
-  }, 500 );
+  }, 500);
 }
 
 //sets functionality for clicking on cards
 function cardEvents() {
   const pageCards = document.querySelectorAll('.card');
-  pageCards.forEach(function(card){
-      // adds eventlistener to each .card
-      card.addEventListener('click', function cardClicks() {
-        // prevents selecting more than 2 cards or selecting open cards
-        if (openCards.length <= 1 && !card.classList.contains('open')) {
-          // adds each chosen card to array
-          openCards.push(card);
-          moveCount();
-          scoreCount();
-          // flips each chosen card
-          card.classList.add('open', 'show');
-        }
-        if (openCards.length === 2) {
-          matching();
-        }
+  pageCards.forEach(function(card) {
+    // adds eventlistener to each .card
+    card.addEventListener('click', function cardClicks() {
+      // prevents selecting more than 2 cards or selecting open cards
+      if (openCards.length <= 1 && !card.classList.contains('open')) {
+        // adds each chosen card to array
+        openCards.push(card);
+        moveCount();
+        scoreCount();
+        // flips each chosen card
+        card.classList.add('open', 'show');
+      }
+      if (openCards.length === 2) {
+        matching();
+      }
     });
   });
 }
