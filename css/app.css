@@ -34,7 +34,8 @@ h1 {
 #start {
   border: 1px solid black;
   text-align: center;
-  padding: 10px 40px 10px 40px;
+  height: 48px;
+  padding: 0px 40px;
   margin-top: 30vh;
   border-radius: 25px;
   background: rgba(235, 175, 35, 0.9);
@@ -171,7 +172,8 @@ Styles for modal prompt
 .play-again {
   border: 1px solid black;
   border-radius: 25px;
-  padding: 10px 40px 10px 40px;
+  height: 48px;
+  padding: 0px 40px;
   margin: 1em;
   background: rgba(235, 175, 35, 0.9);
 }
