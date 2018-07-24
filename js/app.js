@@ -213,7 +213,6 @@ function modalPrompt() {
   replay();
 }
 
-
 //sets functionality for replay button in modal
 function replay() {
   const replay = document.querySelector('.play-again');
