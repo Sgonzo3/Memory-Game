@@ -97,13 +97,14 @@ h1 {
 
 .deck .card.show {
   font-size: 33px;
-  transition: all 100ms ease-in-out;
+  transition: all 200ms ease-in-out;
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .deck .card.match {
   cursor: default;
   background: rgba(235, 175, 35, 0.9);
+  transition: all 200ms ease-in-out;
   /* background: #02ccba; */
   font-size: 33px;
   box-shadow: none;
