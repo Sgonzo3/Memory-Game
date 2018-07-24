@@ -7,14 +7,22 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Open index.html in your browser
 
-To get started, open `js/app.js` and start building out the app's functionality
+Click Start to begin the game
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Your time, score, move count are displayed above the grid
+
+Click each square to reveal its icon
+
+Your second click will check for a match with the next square.
+
+Click retry above the top-right of the grid to reset your game
+
+Match all squares to win!
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is posted as part of my work in the Udacity Front End Nanodegree program. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
