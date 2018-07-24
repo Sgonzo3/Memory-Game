@@ -208,7 +208,7 @@ function modalPrompt() {
   //display stats for time, moves, stars
   yourTime.innerHTML = `TIME: ${timerHTML.innerHTML}`;
   yourMoves.innerHTML = `SCORE: ${moves}`;
-  yourStars.innerHTML = `Rating: `;
+  yourStars.innerHTML = `RATING: `;
   yourStars.appendChild(stars.cloneNode(true));
 
   replay();
