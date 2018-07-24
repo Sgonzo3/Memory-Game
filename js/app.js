@@ -163,6 +163,7 @@ function scoreCount() {
 }
 
 //creates time interval that itterates each second
+//with guidance from https://matthewcranford.com/memory-game-walkthrough-part-6-the-clock/
 function startTimer() {
   time = 0;
   timerHTML = document.getElementById('timer')
