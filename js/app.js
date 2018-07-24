@@ -187,23 +187,6 @@ function showTime() {
   }
 }
 
-//sets functionality for modal
-function modalPrompt() {
-  yourTime = document.querySelector('.your-time');
-  yourMoves = document.querySelector('.your-moves');
-  yourStars = document.querySelector('.your-stars');
-
-  //show modal
-  modal.classList.remove('hidden');
-
-  //display stats for time, moves, stars
-  yourTime.innerHTML = `TIME: ${timerHTML.innerHTML}`;
-  yourMoves.innerHTML = `SCORE: ${moves}`;
-  yourStars.appendChild(stars.cloneNode(true));
-
-  replay();
-}
-
 //Checks if game is won
 function victoryCondition() {
   if (matchedPairs === 8) {
@@ -211,6 +194,25 @@ function victoryCondition() {
     modalPrompt();
   }
 }
+
+//sets functionality for modal
+function modalPrompt() {
+  let yourTime = document.querySelector('.your-time');
+  let yourMoves = document.querySelector('.your-moves');
+  let yourStars = document.querySelector('.your-stars');
+
+  //show modal
+  modal.classList.remove('hidden');
+
+  //display stats for time, moves, stars
+  yourTime.innerHTML = `TIME: ${timerHTML.innerHTML}`;
+  yourMoves.innerHTML = `SCORE: ${moves}`;
+  yourStars.innerHTML = `Rating: `;
+  yourStars.appendChild(stars.cloneNode(true));
+
+  replay();
+}
+
 
 //sets functionality for replay button in modal
 function replay() {
