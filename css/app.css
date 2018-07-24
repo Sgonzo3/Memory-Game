@@ -71,7 +71,7 @@ h1 {
 .deck .card {
   height: 125px;
   width: 125px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid black;
   /* background: #2e3d49; */
   font-size: 0;
@@ -81,7 +81,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 5px 21px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
   transition: all 100ms ease-in-out;
 }
 
@@ -173,7 +173,7 @@ Styles for modal prompt
   z-index: 1000;
   background: #ffffff url('../img/geometry2.png');
   /* Background pattern from Subtle Patterns */
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid black;
   text-align: center;
   padding: 4em;
