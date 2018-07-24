@@ -23,6 +23,6 @@ Match all squares to win!
 
 ## Contributing
 
-This repository is posted as part of my work in the Udacity Front End Nanodegree program. Therefore, we most likely will not accept pull requests.
+This repository is posted as part of my work in the Udacity Front End Nanodegree program. I am not accepting pull requests at this time, however I am happy to discuss the project and any suggestions.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
