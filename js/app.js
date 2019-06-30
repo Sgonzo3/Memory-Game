@@ -217,6 +217,8 @@ function modalPrompt() {
   yourStars.innerHTML = `RATING: `;
   yourStars.appendChild(stars.cloneNode(true));
 
+
+
   replay();
 }
 
