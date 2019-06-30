@@ -115,9 +115,9 @@ h1 {
  */
 
 .score-panel {
-  text-align: center;
-  width: 345px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 60vw;
 }
 
 .score-panel .stars {
