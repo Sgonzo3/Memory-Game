@@ -40,7 +40,7 @@ function start() {
 
 //creates cardHTML
 function makeCards(card) {
-  return `<li class="card"><i class="fa ${card}"></i></li>`;
+  return `<button class="card"><i class="fa ${card}"></i></button>`;
 }
 
 
@@ -97,9 +97,13 @@ function matching() {
 }
 
 function match() {
+  openCards[0].setAttribute("tabIndex", "-1");
+  openCards[1].setAttribute("tabIndex", "-1");
   //show cards as matched
   openCards[0].classList.add('match');
   openCards[1].classList.add('match');
+
+
   //reset array
   openCards = [];
   //inscrese match count
@@ -204,6 +208,8 @@ function modalPrompt() {
 
   //show modal
   modal.classList.remove('hidden');
+  //focus replay
+  modal.querySelector(".play-again").focus();
 
   //display stats for time, moves, stars
   yourTime.innerHTML = `TIME: ${timerHTML.innerHTML}`;
