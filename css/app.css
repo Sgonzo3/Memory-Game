@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,24 +54,39 @@ h1 {
  */
 
 .deck {
-  width: 680px;
-  min-height: 680px;
   background: rgba(0, 0, 0, 0);
   /* background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%); */
-  padding: 2em;
+  padding: 1vh;
   border-radius: 10px;
   border: solid black 1px;
   /* box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5); */
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 3em;
+  justify-content: space-around;
+  align-items: center; */
+  /* margin: 0 0 3em; */
+  display: grid;
+  grid-template-columns: repeat(4, 10vw);
+  grid-template-rows: repeat(4, 10vw);
+  grid-gap: 1vh;
+
 }
 
 .deck .card {
-  height: 125px;
-  width: 125px;
+  max-height: 50vh;
+  max-width: 50vh;
+  align-self: stretch;
+  /* flex: 1;
+  min-height:48px;
+  min-width: 48px;
+  max-height: 125px;
+  max-width: 125px; */
+
+
+  /* height: 10vw; */
+  /* width: 10vw; */
+
+  /* max-height: 19vh; */
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid black;
   /* background: #2e3d49; */
@@ -85,18 +101,17 @@ h1 {
   transition: all 100ms ease-in-out;
 }
 
-.deck .card:hover {
+.card:hover, .card:focus{
   box-shadow: none;
 }
 
 .deck .card.open {
   background: rgba(0, 0, 0, 0);
-  /* background: #02b3e4; */
   cursor: default;
 }
 
 .deck .card.show {
-  font-size: 33px;
+  font-size: 4vw;
   transition: all 200ms ease-in-out;
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -106,7 +121,7 @@ h1 {
   background: rgba(235, 175, 35, 0.9);
   transition: all 200ms ease-in-out;
   /* background: #02ccba; */
-  font-size: 33px;
+  font-size: 4vw;
   box-shadow: none;
 }
 
@@ -115,9 +130,9 @@ h1 {
  */
 
 .score-panel {
-  text-align: center;
-  width: 345px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 60vw;
 }
 
 .score-panel .stars {

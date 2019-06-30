@@ -27,7 +27,10 @@
         <li><i class="fa fa-star"></i></li>
       </ul>
 
-      <span id="moves"></span> Moves
+      <div>
+        <span id="moves">0</span>
+        <span>Moves</span>
+      </div>
 
       <div class="restart">
         <i class="fa fa-repeat"></i>
@@ -92,12 +95,12 @@
 
   <div class="modal hidden">
     <section class="prompt">
-      <h1 class="victory">Congratulations!</h1>
+      <h1 tabindex="1" class="victory">Congratulations!</h1>
       <p class="your-time"></p>
       <p class="your-moves"></p>
       <div class="your-stars"></div>
       <div class="replay">
-        <button class="play-again">Play Again?</button>
+        <button tabindex="1" class="play-again">Play Again?</button>
       </div>
 
     </section>
