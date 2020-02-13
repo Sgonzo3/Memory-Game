@@ -1,5 +1,7 @@
 # Memory Game Project
 
+A matching game designed to test user memory by matching 8 pairs of cards across a 4 x 4 grid
+
 ## Table of Contents
 
 * [Instructions](#instructions)
